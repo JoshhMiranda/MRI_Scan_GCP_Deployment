@@ -133,9 +133,9 @@ dmypy.json
 
 
 # classifier model
-artifacts/
-.artifacts
-artifacts.bak/
+# artifacts/
+# .artifacts
+# artifacts.bak/
 
 
 # mlflow files
