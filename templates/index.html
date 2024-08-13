@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Classification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            width: 100%;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            line-height: 1.2;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 900px;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        input[type="file"] {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+            width: 100%;
+            margin: 10px 0;
+            background-color: #fafafa;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #eaf0f4;
+            border: 1px solid #c1d3e3;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .result p {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .info-section {
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        .info-section h3 {
+            color: #333;
+        }
+        .info-section p {
+            margin: 10px 0;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
+        }
+        .info-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .info-section ul li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Brain Tumor Classification</h1>
+    </div>
+    <div class="main-content">
+        <div class="info-section">
+            <h3>What is a Brain Tumor?</h3>
+            <p>A brain tumor is a collection, or mass, of abnormal cells in your brain. Your skull, which encloses your brain, is very rigid. Any growth inside such a restricted space can cause problems. Brain tumors can be cancerous (malignant) or noncancerous (benign). When benign or malignant tumors grow, they can cause the pressure inside your skull to increase. This can cause brain damage, and it can be life-threatening.</p>
+        </div>
+
+        <div class="info-section">
+            <h3>How Deep Learning Helps!</h3>
+            <p>The application of deep learning approaches in context to improve health diagnosis is providing impactful solutions. According to the World Health Organization (WHO), proper brain tumor diagnosis involves detection, brain tumor location identification, and classification of the tumor on the basis of malignancy, grade, and type. This experimental work in the diagnosis of brain tumors using Magnetic Resonance Imaging (MRI) involves detecting the tumor, classifying the tumor in terms of grade, type, and identification of tumor location. This method has experimented in terms of utilizing one model for classifying brain MRI on different classification tasks rather than an individual model for each classification task. The Convolutional Neural Network (CNN) based multi-task classification is equipped for the classification and detection of tumors. The identification of brain tumor location is also done using a CNN-based model by segmenting the brain tumor.</p>
+        </div>
+
+        <div class="info-section">
+            <h3>Our Approach to Implementing a DL Vision Model for Classification:</h3>
+            <p>We have trained a CNN model for four target classes: Glioma, Meningioma, Pituitary, and No Tumor. The descriptions of the classes are as follows:</p>
+            <ul>
+                <li><strong>Glioma:</strong> Tumors originating from the glial cells in the brain, gliomas are common and can range from low-grade, less aggressive forms to high-grade, highly malignant varieties. Early and precise classification is essential for effective treatment.</li>
+                <li><strong>Meningioma:</strong> Arising from the meninges, the protective membranes covering the brain and spinal cord, meningiomas are typically benign but can cause significant problems due to their size and location. Identifying meningiomas accurately is crucial for patient management.</li>
+                <li><strong>No Tumor:</strong> This class includes MRI images that show no evidence of tumorous growth. Correctly identifying no-tumor images is vital to avoid unnecessary treatments and to maintain high diagnostic accuracy.</li>
+                <li><strong>Pituitary:</strong> Pituitary tumors develop in the pituitary gland at the brain's base. These tumors can disrupt hormonal balance and lead to systemic issues, making their detection important for appropriate medical intervention.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Upload Image</h2>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept=".jpg, .jpeg, .png" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h2>Prediction Result:</h2>
+            <p>{{ prediction }}</p>
+            <!-- <img src="{{ image_url }}" alt="Uploaded Image"> -->
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
